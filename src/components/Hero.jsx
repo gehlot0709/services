@@ -1,90 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { gsap } from "gsap";
 import { motion, useScroll } from "framer-motion";
 import ParticlesBackground from "./ParticlesBackground";
 
 function Hero() {
-  const designRef = useRef(null);
-  const headingRef = useRef(null);
-  const paragraphRef = useRef(null);
-  const buttonsRef = useRef([]);
-  const particlesContainerRef = useRef(null);
-
   const { scrollYProgress } = useScroll();
-
-  useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-
-    // Rotate + pulse "Design"
-    tl.fromTo(
-      designRef.current,
-      { rotation: 0, scale: 1 },
-      {
-        rotation: 360,
-        duration: 2,
-        ease: "power2.inOut",
-      }
-    ).to(
-      designRef.current,
-      {
-        scale: 1.2,
-        duration: 0.5,
-        yoyo: true,
-        repeat: 1,
-      },
-      "-=1.5"
-    );
-
-    // Heading
-    tl.fromTo(
-      headingRef.current,
-      { opacity: 0, scale: 0.8 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-      },
-      "-=1"
-    );
-
-    // Paragraph
-    tl.fromTo(
-      paragraphRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-      },
-      "-=0.8"
-    );
-
-    // Buttons
-    tl.fromTo(
-      buttonsRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-      },
-      "-=0.6"
-    );
-
-    // Particles container fade-in
-    if (particlesContainerRef.current) {
-      tl.fromTo(
-        particlesContainerRef.current,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 1,
-        },
-        "-=1"
-      );
-    }
-  }, []);
 
   return (
     <>
@@ -105,49 +25,71 @@ function Hero() {
       />
 
       <section className="relative flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden">
-        {/* Particle Background Container */}
-        <div
-          ref={particlesContainerRef}
+        {/* Particle Background */}
+        <motion.div
           className="particles-bg absolute inset-0 z-0 opacity-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
         >
           <ParticlesBackground />
-        </div>
+        </motion.div>
 
         {/* Content */}
         <div className="relative z-10 text-center max-w-3xl">
-          <h1
-            ref={headingRef}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight opacity-0 text-black"
+          <motion.h1
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight text-black"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
           >
             We Build, Market &{" "}
-            <span ref={designRef} className="inline-block text-indigo-500">
+            <motion.span
+              className="inline-block text-indigo-500"
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                rotate: { duration: 2, ease: "easeInOut" },
+                scale: { duration: 2, times: [0, 0.5, 1], ease: "easeInOut" },
+              }}
+            >
               Design
-            </span>{" "}
+            </motion.span>{" "}
             Your Success
-          </h1>
-          <p
-            ref={paragraphRef}
-            className="text-lg sm:text-xl text-gray-800 mb-10 opacity-0"
+          </motion.h1>
+
+          <motion.p
+            className="text-lg sm:text-xl text-gray-800 mb-10"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
           >
-            Our agency provides top-quality Web Development, Digital Marketing,
-            and Creative Designing services to grow your business online.
-          </p>
-          <div className="hero-buttons flex flex-col sm:flex-row justify-center gap-4">
+            Our agency provides top-quality Web Development, Digital Marketing, and Creative
+            Designing services to grow your business online.
+          </motion.p>
+
+          <motion.div
+            className="hero-buttons flex flex-col sm:flex-row justify-center gap-4"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.5 }}
+          >
             {["/get-quote", "/portfolio"].map((path, i) => (
               <Link
                 key={path}
                 to={path}
-                ref={(el) => (buttonsRef.current[i] = el)}
                 className={`${
                   i === 0
                     ? "bg-indigo-600 text-white font-semibold"
                     : "border border-indigo-500 text-indigo-500"
-                } px-6 py-3 rounded-lg shadow-lg hover:bg-indigo-500 hover:text-white transition opacity-0`}
+                } px-6 py-3 rounded-lg shadow-lg hover:bg-indigo-500 hover:text-white transition`}
               >
                 {i === 0 ? "Get a Quote" : "View Portfolio"}
               </Link>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </>
