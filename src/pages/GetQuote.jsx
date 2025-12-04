@@ -40,7 +40,7 @@ function GetQuote() {
   };
 
   return (
-    <section className="get-quote py-20 bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600">
+    <section className="get-quote py-20 ">
       <div className="container mx-auto px-6 max-w-4xl">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}

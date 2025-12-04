@@ -64,7 +64,7 @@ function ServiceCard({ service, index }) {
 
 function Services() {
   return (
-    <section className="services py-16 bg-white dark:bg-gray-900">
+    <section className="services py-16  dark:bg-gray-900">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}

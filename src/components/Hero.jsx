@@ -24,7 +24,7 @@ function Hero() {
         }}
       />
 
-      <section className="relative flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden hero_section">
         {/* Particle Background */}
         <motion.div
           className="particles-bg absolute inset-0 z-0 opacity-0"
