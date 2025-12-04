@@ -8,7 +8,7 @@ const MainLayout = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col main_layout">
       <Navbar />
       {/* Add top padding so content is not hidden behind fixed navbar */}
-      <div className="flex-grow">
+      <div className="flex-grow mt-20">
         <Outlet />
       </div>
       <Footer />
