@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-black via-gray-900 to-black text-gray-300 py-16 mt-20">
+    <footer className="bg-gradient-to-b from-black via-gray-900 to-black text-gray-300 py-16">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
         {/* Branding & Social */}
         <div>
