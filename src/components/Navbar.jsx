@@ -8,7 +8,6 @@ import {
   FaBullhorn,
   FaPaintBrush,
 } from "react-icons/fa";
-import ThemeSwitch from "./ThemeSwitch/ThemeSwitch.jsx";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,7 +38,7 @@ const Navbar = () => {
         { name: "PPC Services", path: "/services/ppc" },
         { name: "Graphic Design Service", path: "/services/graphic" },
         { name: "WhatsApp Marketing", path: "/services/whatsapp" },
-        { name: "Website Design Service", path: "/services/web-design" },
+        { name: "Website Design Service", path: "services/web-design" },
         { name: "Email Marketing", path: "/services/email" },
         { name: "Content Marketing", path: "/services/content" },
         { name: "Affiliate Marketing", path: "/services/affiliate" },
@@ -134,13 +133,10 @@ const Navbar = () => {
           >
             Get Quote
           </Link>
-
-          <ThemeSwitch />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeSwitch />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-gray-700 dark:text-gray-300 text-2xl transition-colors"
