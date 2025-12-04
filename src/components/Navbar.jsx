@@ -164,16 +164,17 @@ const Navbar = () => {
             </Link>
           ))}
 
-          {/* Services (simple list in mobile) */}
+          {/* Services Dropdowns */}
           {servicesMenu.map((cat, i) => (
-            <div
+            <details
               key={i}
               className="border-b border-gray-200 dark:border-gray-700 pb-2"
             >
-              <p className="px-3 py-2 font-medium text-gray-700 dark:text-gray-300">
+              <summary className="px-3 py-2 font-medium text-gray-700 dark:text-gray-300 cursor-pointer flex justify-between items-center">
                 {cat.title}
-              </p>
-              <ul className="pl-6 mt-1 space-y-1">
+                <FaChevronDown className="ml-2 text-sm" />
+              </summary>
+              <ul className="pl-6 mt-2 space-y-1">
                 {cat.items.map((item, j) => (
                   <li key={j}>
                     <Link
@@ -186,10 +187,10 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </details>
           ))}
 
-          {/* CTA */}
+          {/* CTA: Get Quote */}
           <Link
             to="/get-quote"
             onClick={() => setMenuOpen(false)}
