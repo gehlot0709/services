@@ -1,30 +1,43 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout.jsx";
+import React from "react";
 
-// Pages
-import Home from "../pages/Home.jsx";
-import About from "../pages/About.jsx";
-import Contact from "../pages/Contact.jsx";
-import Portfolio from "../pages/Portfolio.jsx";
-import GetQuote from "../pages/GetQuote.jsx";
-import ServicesPage from "../pages/ServicesPage.jsx"; // NEW: Create this file
-import NotFound from "../pages/NotFound.jsx";
+// Lazy load pages for loader support
+const Home = React.lazy(() => import("../pages/Home.jsx"));
+const About = React.lazy(() => import("../pages/About.jsx"));
+const Contact = React.lazy(() => import("../pages/Contact.jsx"));
+const Portfolio = React.lazy(() => import("../pages/Portfolio.jsx"));
+const GetQuote = React.lazy(() => import("../pages/GetQuote.jsx"));
+const ServicesPage = React.lazy(() => import("../pages/ServicesPage.jsx"));
+const NotFound = React.lazy(() => import("../pages/NotFound.jsx"));
 
 // Service Detail Pages
-import SEO from "../pages/Services/Seo.jsx";
-import SocialMedia from "../pages/Services/SocialMedia.jsx";
-import Webdesign from "../pages/Services/Webdesign.jsx";
-import Frontend from "../pages/Services/Frontend.jsx";
-import Backend from "../pages/Services/Backend.jsx";
-import Fullstack from "../pages/Services/Fullstack.jsx";
-import EmailMarketing from "../pages/Services/EmailMarketing.jsx";
-import UIUX from "../pages/Services/UIUX.jsx";
-import LogoDesign from "../pages/Services/LogoDesign.jsx";
-import PPC from "../pages/Services/PPC.jsx"; // NEW
-import WhatsAppMarketing from "../pages/Services/WhatsAppMarketing.jsx"; // NEW
-import ContentMarketing from "../pages/Services/ContentMarketing.jsx"; // NEW
-import AffiliateMarketing from "../pages/Services/AffiliateMarketing.jsx"; // NEW
-import GraphicDesign from "../pages/Services/GraphicDesign.jsx"; // NEW
+const SEO = React.lazy(() => import("../pages/Services/Seo.jsx"));
+const SocialMedia = React.lazy(() =>
+  import("../pages/Services/SocialMedia.jsx")
+);
+const Webdesign = React.lazy(() => import("../pages/Services/Webdesign.jsx"));
+const Frontend = React.lazy(() => import("../pages/Services/Frontend.jsx"));
+const Backend = React.lazy(() => import("../pages/Services/Backend.jsx"));
+const Fullstack = React.lazy(() => import("../pages/Services/Fullstack.jsx"));
+const EmailMarketing = React.lazy(() =>
+  import("../pages/Services/EmailMarketing.jsx")
+);
+const UIUX = React.lazy(() => import("../pages/Services/UIUX.jsx"));
+const LogoDesign = React.lazy(() => import("../pages/Services/LogoDesign.jsx"));
+const PPC = React.lazy(() => import("../pages/Services/PPC.jsx"));
+const WhatsAppMarketing = React.lazy(() =>
+  import("../pages/Services/WhatsAppMarketing.jsx")
+);
+const ContentMarketing = React.lazy(() =>
+  import("../pages/Services/ContentMarketing.jsx")
+);
+const AffiliateMarketing = React.lazy(() =>
+  import("../pages/Services/AffiliateMarketing.jsx")
+);
+const GraphicDesign = React.lazy(() =>
+  import("../pages/Services/GraphicDesign.jsx")
+);
 
 export const router = createBrowserRouter([
   {
@@ -36,8 +49,8 @@ export const router = createBrowserRouter([
       { path: "contact", element: <Contact /> },
       { path: "portfolio", element: <Portfolio /> },
       { path: "get-quote", element: <GetQuote /> },
-      { path: "services", element: <ServicesPage /> }, // Services main page
-      
+      { path: "services", element: <ServicesPage /> },
+
       // Individual Service Pages
       { path: "services/seo", element: <SEO /> },
       { path: "services/social-media", element: <SocialMedia /> },
