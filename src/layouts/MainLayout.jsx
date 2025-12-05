@@ -1,7 +1,10 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/Footer.jsx"; // Make sure this path matches your file structure
+import Footer from "../components/Footer.jsx";
+import ScrollToTop from "../components/ScrollToTop.js";
+ 
+
 
 const MainLayout = () => {
   return (
@@ -9,6 +12,7 @@ const MainLayout = () => {
       <Navbar />
       {/* Add top padding so content is not hidden behind fixed navbar */}
       <div className="flex-grow mt-16">
+          <ScrollToTop />
         <Outlet />
       </div>
       <Footer />
