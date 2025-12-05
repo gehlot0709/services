@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll } from "framer-motion";
-import ParticlesBackground from "./ParticlesBackground";
+
 
 function Hero() {
   const { scrollYProgress } = useScroll();
@@ -31,9 +31,7 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-        >
-          <ParticlesBackground />
-        </motion.div>
+        ></motion.div>
 
         {/* Content */}
         <div className="relative z-10 text-center max-w-3xl">
@@ -66,8 +64,8 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
           >
-            Our agency provides top-quality Web Development, Digital Marketing, and Creative
-            Designing services to grow your business online.
+            Our agency provides top-quality Web Development, Digital Marketing,
+            and Creative Designing services to grow your business online.
           </motion.p>
 
           <motion.div
